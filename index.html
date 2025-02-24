@@ -72,6 +72,8 @@
         const form = document.getElementById('input-form');
         const input = document.getElementById('input');
         const messages = document.getElementById('messages');
+        const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+        const apiUrl = "https://ai.hackclub.com/chat/completions";
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -80,7 +82,7 @@
             input.value = '';
 
             try {
-                const response = await fetch('https://ai.hackclub.com/chat/completions', {
+                const response = await fetch(proxyUrl + apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
