@@ -79,15 +79,16 @@
             addMessage(userMessage, 'user');
             input.value = '';
 
-            const response = await fetch('https://ai.hackclub.com/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    messages: [{ role: 'user', content: userMessage }]
-                })
-            });
+const response = await fetch('https://proxy.cors.sh/https://ai.hackclub.com/chat/completions', {
+    method: 'POST',
+    headers: {
+        'x-cors-api-key': 'temp_83e5b60a3c6897c988dacad331e7199f',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        messages: [{ role: 'user', content: userMessage }]
+    })
+});
             const data = await response.json();
             const aiMessage = data.choices[0].message.content;
             addMessage(aiMessage, 'ai');
